@@ -5,6 +5,8 @@ deps:
 	sh requirements.sh
 
 node-setup:
+	rm -rf node/api/
+	mv api/ node/
 	docker build -t tiemma/node-api -f node/Dockerfile .
 
 mongo-setup:
