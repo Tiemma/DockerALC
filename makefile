@@ -1,17 +1,16 @@
-NODE_DIR=node
-MONGO_DIR=mongo
-NODE_VERSION=9.2.1-alpine
-MONGO_VERSION=latest
 
-all: deps mongo-setup node-setup
+all: deps node-setup mongo-setup start
 
 deps: 
-	sh requirements.sh $(NODE_DIR) $(MONGO_DIR)
+	sh requirements.sh
 
 node-setup:
-	docker run -it --name node -v ~/Docker:/data --link mongo:mongo -w /data/api -p 3000:3000  node npm {install,"run start"} 
+	docker build -t tiemma/node-api -f node/Dockerfile .
 
 mongo-setup:
-	docker run -it -v ~/Docker:/data --name mongo  mongo -p 27017:27017 -w data/api {"mongod --bind_ip_all &","mongo user.js crud"}
+	docker run -d --name crud mongo
+
+start:	
+	docker run --link crud:crud -p 3000:3000 --name node-app tiemma/node-api
 
 
