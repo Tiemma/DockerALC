@@ -27,8 +27,8 @@ DB_URL='mongodb://john:doe@localhost:27017/databaseName'
 CONNECT_FLAG=false
 ```
 **NOTE: CONNECT_FLAG must be set to false to enable the database tests run successfully.
-
-**DO NOT CHANGE!.
+DO NOT CHANGE!.
+*
 
 Once that's setup, you can cd into the ~/Docker directory and run make to start the machine
 
@@ -38,3 +38,23 @@ make
 
 This will setup the node and mongo images and run them automatically.
 
+
+## Running the tests
+
+The tests are run using Jasmine and have been installed in the docker machine.
+
+There are two tests and they can be located in the tests folder of the api project once cloned
+using the steps outlined above.
+ * test_database.js
+ * test_server.js
+ 
+**NOTE: The Docker instances must be running before running tests on the machine successfully.
+You can run the tests using the make target tests.
+* 
+```
+make tests
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
