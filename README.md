@@ -10,6 +10,11 @@ This repository contains a simple setup for a docker image to run an already set
 
 ### Setup
 
+Clone this repo using the following command
+```
+git clone https://github.com/Tiemma/DockerALC
+```
+
 Firstly, you'd need to setup the node app with your env details before starting the docker machine.
 
 Run
@@ -17,7 +22,7 @@ Run
 make deps
 ```
 
-This will download the api project to the ~/Docker directory and cd into it .
+This will download the api project to the current directory you cloned to .
 
 Do create a .env file for the node app setup with the following format.
 This same format is available in the .env.sample file.
@@ -30,7 +35,7 @@ CONNECT_FLAG=false
 DO NOT CHANGE!.
 *
 
-Once that's setup, you can cd into the ~/Docker directory and run make to start the machine
+Once that's setup, you can cd into the root directory of the project and run make to start the machine
 
 ```
 make 
@@ -41,7 +46,7 @@ This will setup the node and mongo images and run them automatically.
 
 ## Running the tests
 
-The tests are run using Jasmine and have been installed in the docker machine.
+The tests are run using Jasmine which has been installed in the docker machine.
 
 There are two tests and they can be located in the tests folder of the api project once cloned
 using the steps outlined above.
